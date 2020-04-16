@@ -1,0 +1,11 @@
+DOCKER ?= docker
+
+.NOTPARALLEL:
+.PHONY: all 
+
+all: cpu
+
+cpu:
+	$(DOCKER) pull ubuntu:16.04
+	$(DOCKER) build -f Dockerfile.cpu -t registry.cn-hangzhou.aliyuncs.com/qiutzh/miniconda_py36:cpu .
+	$(DOCKER) push registry.cn-hangzhou.aliyuncs.com/qiutzh/miniconda_py36:cpu
